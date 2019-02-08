@@ -52,7 +52,7 @@ async function main() {
         `)
 
     } catch (error) {
-        console.error('\nDeu ruim bro.\n\n', error)
+        console.error('\nDeu ruim bro.\n', error)
     }
 } 
 

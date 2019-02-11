@@ -1,4 +1,4 @@
-//for - for in - for of
+//for - for in - for of.
 
 const service = require('./service')
 

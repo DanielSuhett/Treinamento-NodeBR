@@ -64,7 +64,7 @@ class Database {
         return await this.escreverArquivo(dados)
     }
 
-    async atualizar(id, modificacoes) {
+    async atualizar(id, atualizacoes) {
         const dados = await this.obterDadosArquivo()
         const indice = dados.findIndex(item => item.id === parseInt(id))
         if (indice === -1) {
@@ -72,16 +72,14 @@ class Database {
         }
 
         const atual = dados[indice]
-        const objetoAtualizar = {
-            ...atual,
-            ...modificacoes
-        }
-
         dados.splice(indice, 1)
+
+        const objAtualizado = JSON.parse(JSON.stringify(atualizacoes));
+        const dadoAtualizado = Object.assign({}, atual, objAtualizado);
 
         return await this.escreverArquivo([
             ...dados,
-            ...objetoAtualizar
+            dadoAtualizado
         ])
 
     }
